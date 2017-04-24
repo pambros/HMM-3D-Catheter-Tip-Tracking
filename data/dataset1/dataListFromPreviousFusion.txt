@@ -1,0 +1,15 @@
+#	DataList
+# m_Info3dra
+3dra/3dra_0001_info.txt
+# m_Vessel3draFileName
+3dra/3dra_0001_3.0_vesselsStructCenterline.txt
+# m_InitializeFromTipPosition (True, False), use only with HMM method
+False
+# m_FirstFusion, use only with HMM method
+fusion/3dra_0001_0000_fusion.txt
+# m_InfoFluoroFileName
+fluoro/infoFluoroCarmParameters.txt
+# m_NbFluoro
+74
+# m_CatheterCenterlineFileName
+fluoro/centerlines/%04d_3.0_catheterCenterline.txt

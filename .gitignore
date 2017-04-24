@@ -1,0 +1,6 @@
+generated
+*.pyc
+sync.ffs_db
+userSpecific/*
+!userSpecific/buildConfig.default.bat
+!userSpecific/globalVariables.default.bat

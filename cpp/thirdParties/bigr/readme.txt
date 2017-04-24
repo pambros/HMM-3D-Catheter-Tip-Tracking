@@ -1,0 +1,1 @@
+Copyright (c) 2006 Michiel Schaap and Coert Metz, Biomedical Imaging Group Rotterdam (BIGR) / Erasmus MC, the Netherlands

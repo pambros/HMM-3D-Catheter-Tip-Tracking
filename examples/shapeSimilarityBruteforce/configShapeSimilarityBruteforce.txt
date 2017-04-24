@@ -1,0 +1,84 @@
+#	Config
+# m_Method (METHOD_SHAPE_SIMILARITY = 0, METHOD_HMM = 1)
+0
+# m_Optimizer (OPTIMIZER_BRUTE_FORCE = 0, OPTIMIZER_POWELL = 1)
+0
+#	Base2D3DParameters
+# m_DistanceUsed (DISTANCE_SQR = 0, DISTANCE_ABSOLUTE = 1, DISTANCE_EUCLIDEAN = 2)
+2
+# m_MetricUsed (METRIC_FROM_CATHETER = 0, METRIC_IMPROVED_FROM_CATHETER = 1)
+1
+# m_Dmax // in mm (between 10 and 150mm), used only if m_MetricUsed = METRIC_IMPROVED_FROM_CATHETER
+20
+# m_UseWeight (True, False)
+T
+# m_WeightSigma // sigma (between 20 and 100 with a catheter size in average of 200mm) of the gaussian  W(x) = lambda + (1.0 - lambda)*e(-x^2/(2*sigma^2)), used only if m_UseWeight = True
+80
+# m_WeightLambda // lambda (something between 0 and 0.5), used only if m_UseWeight = True
+0.1
+# m_RadiusMetric (RADIUS_METRIC_FCOST1 = 0, RADIUS_METRIC_FCOST2 = 1, RADIUS_METRIC_FCOST3 = 2)
+0
+# m_RadiusAlpha1, used only if m_RadiusMetric = RADIUS_METRIC_FCOST2 or RADIUS_METRIC_FCOST3
+2.0
+# m_RadiusAlpha2, used only if m_RadiusMetric = RADIUS_METRIC_FCOST2 or RADIUS_METRIC_FCOST3
+0.85
+# m_UseLimits // limit is useless with brute force (no need)
+T
+# m_LimitX // in mm
+100.0
+# m_LimitY // in mm
+100.0
+# m_LimitZ // in mm
+100.0
+# m_LimitAlpha // in degrees
+15
+# m_LimitBeta // in degrees
+15
+# m_LimitGamma // in degrees
+15
+#	ShapeSimilarityParameterFile
+# m_RatioNbPtCatheter // in [0, 1], if less than m_RatioNbPtCatheter*100 % of the catheter has been used in the score, we discard this score
+0.1
+# m_NbRankPathToRegister_k
+5
+#	MultiParameter2D3DParameters
+# m_OffsetX // in mm
+0.0
+# m_OffsetY // in mm
+0.0
+# m_OffsetZ // in mm
+0.0
+# m_OffsetAlpha // in degree
+0.0
+# m_OffsetBeta // in degree
+0.0
+# m_OffsetGamma // in degree
+0.0
+# m_IntervalX // in mm, +/- m_IntervalX/2
+100
+# m_IntervalY // in mm, +/- m_IntervalY/2
+100
+# m_IntervalZ // in mm, +/- m_IntervalZ/2
+0.0
+# m_IntervalAlpha // in degree, +/- m_IntervalAlpha/2
+28.0
+# m_IntervalBeta // in degree, +/- m_IntervalBeta/2
+28.0
+# m_IntervalGamma // in degree, +/- m_IntervalGamma/2
+28.0
+# m_NbSamplingX
+7
+# m_NbSamplingY
+7
+# m_NbSamplingZ
+1
+# m_NbSamplingAlpha
+7
+# m_NbSamplingBeta
+7
+# m_NbSamplingGamma
+7
+# m_ReductionCoeff
+0.5
+# m_NbIterations
+7

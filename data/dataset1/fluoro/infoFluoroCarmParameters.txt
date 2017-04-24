@@ -1,0 +1,19 @@
+#	InfoFluoro
+# m_UseCarmParameters (True, False)
+True
+# m_Rows // in pixel
+1024
+# m_Columns // in pixel
+1024
+# m_DistanceSourceToDetector // in mm
+1113
+# m_DistanceSourceToPatient // in mm
+810
+# m_PrimaryAngle // in degree
+-27.9
+# m_SecondaryAngle // in degree
+-0.28
+# m_PixelSpacingX // in mm
+0.25355859375
+# m_PixelSpacingY // in mm
+0.25355859375
