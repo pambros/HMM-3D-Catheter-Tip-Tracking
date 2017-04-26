@@ -28,7 +28,7 @@ using namespace std;
 
 // If SORT_WITH_ALPHA_VARIABLE is defined, the observation score is only computed with the points with the best sum_j(alpha_{t-1}(j)*aji) i.e. alphaVariable
 // If not, the observation score is only computed with the points with the best max_j(delta_{t-1}*aji) i.e. maxForwardVariable
-#define SORT_WITH_ALPHA_VARIABLE
+//#define SORT_WITH_ALPHA_VARIABLE
 
 // If SORT_WITH_SUM_DELTA is defined, the observation score is only computed with the points with the best sum_j(delta_{t-1}(j)*aji) i.e. sumForwardVariable
 // If not, the observation score is only computed with the points with the best max_j(delta_{t-1}*aji) i.e. maxForwardVariable
