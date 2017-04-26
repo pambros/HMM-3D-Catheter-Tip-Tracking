@@ -16,7 +16,9 @@ This code is the implementation of the methods presented in the following papers
 
 Tested on Windows 10 64bits with Microsoft Visual C++ 12.00 2013 update 5 express version.
 It should work on Linux and with other compilers as well.
-Note: Multithreading and AVX instructions are now only implemented for MSVC.
+
+Note that the multithreading and AVX instructions are only implemented for MSVC for now.
+
 To build the code you need:
 
 - [CMake][cmake] to build the project
@@ -37,7 +39,9 @@ cmake "../" -DCMAKE_CONFIGURATION_TYPES="Debug;Release" -DUSE_ITK=ON -DITK_DIR="
 cmake --build . --config Release
 ```
 
-Then, run the example with the configuration proposed in [1] (i.e. 3D catheter tip tracking using hidden Markov model). `../../data/dataset1` is the path where the dataset is (3D vessels centerline file, initial 3D catheter tip position, 2D catheter centerline files, C-arm angle and position). `configHMMPowell.txt` is the configuration file (more information in the details section). `generated` is the path where to save the results. `-debugImages` say that we want to have debug images to check the registrations.
+Then, run the example with the configuration proposed in [1] (i.e. 3D catheter tip tracking using hidden Markov model). `../../data/dataset1` is the path where the dataset is (3D vessels centerline file, initial 3D catheter tip position, 2D catheter centerline files, C-arm angle and position). `configHMMPowell.txt` is the configuration file (more information in the [Specifications section][specifications]). `generated` is the path where to save the results. `-debugImages` says that we want to have debug images to check the registrations.
+
+[specifications]: https://github.com/pambros/HMM-3D-Catheter-Tip-Tracking#specifications
 
 ```batch
 cd ../../examples/HMMPowell
@@ -62,7 +66,7 @@ compileRedirect.bat
 
 To see if everything went fine, check the files `cpp/generated/stderrbuildConfig.txt`, `cpp/generated/stdoutbuildConfig.txt`, `cpp/generated/stderrcompile.txt` and `cpp/generated/stdoutcompile.txt`.
 
-Finally examples are simply launch with a batch script.
+Finally examples are simply launched with a batch script.
 
 ```batch
 cd ../examples/HMMPowell
@@ -73,6 +77,6 @@ HMMPowellRedirect.bat
 
 	WIP
 	
-## Details
+## Specifications
 
 	WIP
