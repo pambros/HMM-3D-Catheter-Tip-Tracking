@@ -11,3 +11,68 @@ This code is the implementation of the methods presented in the following papers
 [2017AmbrosiniPaper]: https://drive.google.com/open?id=0B3KoSrMZcykNYjFmRzVKemlkdW8
 [2015Ambrosini]: https://dx.doi.org/10.1007/s11548-015-1218-x
 [2015AmbrosiniPaper]: https://drive.google.com/open?id=0B3KoSrMZcykNcGdpYlhvT2pEN0E
+
+## Prerequisites
+
+Tested on Windows 10 64bits with Microsoft Visual C++ 12.00 2013 update 5 express version.
+It should work on Linux and with other compilers as well.
+Note: Multithreading and AVX instructions are now only implemented for MSVC.
+To build the code you need:
+
+- [CMake][cmake] to build the project
+- [ITK library][itk] mainly for the Powell optimizer and ITK image routine
+
+[cmake]: https://cmake.org/
+[itk]: https://itk.org/
+
+## Quick start
+
+On Windows, execute these commands to build the executable. `ITK_DIR` is the path where your ITK library is.
+
+```batch
+cd cpp
+mkdir generated
+cd generated
+cmake "../" -DCMAKE_CONFIGURATION_TYPES="Debug;Release" -DUSE_ITK=ON -DITK_DIR="C:/libs/itk"
+cmake --build . --config Release
+```
+
+Then, run the example with the configuration proposed in [1] (i.e. 3D catheter tip tracking using hidden Markov model). `../../data/dataset1` is the path where the dataset is (3D vessels centerline file, initial 3D catheter tip position, 2D catheter centerline files, C-arm angle and position). `configHMMPowell.txt` is the configuration file (more information in the details section). `generated` is the path where to save the results. `-debugImages` say that we want to have debug images to check the registrations.
+
+```batch
+cd ../../examples/HMMPowell
+mkdir generated
+"../../cpp/generated/Release/TACE" Registration "../../data/dataset1" "configHMMPowell.txt" "generated" -debugImages
+```
+
+In the folder `generated` you should have now the transformation matrices and images of the registration between the 2D catheter (in red) and the 3D vessels (in green) for the sequence of 74 images.
+
+![](docs/images/registrationExample.png)
+
+## Specific build
+
+In order to have your own building configuration with none default parameters, we propose a different way (actually the standard way) to build the project. First edit these two files `userSpecific/globalVariables.default.bat` and `userSpecific/buildConfig.default.bat` and change all the paths/parameters to fit your machine configuration.
+Then, build the project.
+
+```batch
+cd cpp
+buildConfigRedirect.bat
+compileRedirect.bat
+````
+
+To see if everything went fine, check the files `cpp/generated/stderrbuildConfig.txt`, `cpp/generated/stdoutbuildConfig.txt`, `cpp/generated/stderrcompile.txt` and `cpp/generated/stdoutcompile.txt`.
+
+Finally examples are simply launch with a batch script.
+
+```batch
+cd ../examples/HMMPowell
+HMMPowellRedirect.bat
+```
+
+## Examples
+
+	WIP
+	
+## Details
+
+	WIP
