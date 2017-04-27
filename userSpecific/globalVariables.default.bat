@@ -20,9 +20,9 @@
 @set PATH=%PATH%;C:\Windows\system32
 @set PATH=%PATH%;%_MSVC_BIN_X64%
 @set PATH=%PATH%;%_MSVC_BIN%
-@set VS140COMNTOOLS=
+@set VS140COMNTOOLS= 
 @set VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
-@set VS110COMNTOOLS=
+@set VS110COMNTOOLS= 
 
 @rem ************************************** for TACE
 @rem @set PATH=%PATH%;%_GDCM_BIN%

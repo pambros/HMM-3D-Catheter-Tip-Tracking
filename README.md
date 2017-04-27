@@ -73,6 +73,8 @@ cd ../examples/HMMPowell
 HMMPowellRedirect.bat
 ```
 
+Output can be checked in the files `generated/stderrHMMPowell.txt` and `generated/stdoutHMMPowell.txt`.
+
 ## Examples
 
 	WIP
