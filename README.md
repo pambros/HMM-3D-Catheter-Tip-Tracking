@@ -2,7 +2,7 @@
 
 This code is the implementation of the methods presented in the following papers:
 
-1. P. Ambrosini, I. Smal, D. Ruijters, W. J. Niessen, A. Moelker and T. Van Walsum, "[A Hidden Markov Model for 3D Catheter Tip Tracking With 2D X-ray Catheterization Sequence and 3D Rotational Angiography][2017Ambrosini]," IEEE Transactions on Medical Imaging, vol. 36(3), pp. 757-768, 2017. [![](docs/images/pdf.png)][2017AmbrosiniPaper]
+1. P. Ambrosini, I. Smal, D. Ruijters, W. J. Niessen, A. Moelker and T. van Walsum, "[A Hidden Markov Model for 3D Catheter Tip Tracking With 2D X-ray Catheterization Sequence and 3D Rotational Angiography][2017Ambrosini]," IEEE Transactions on Medical Imaging, vol. 36(3), pp. 757-768, 2017. [![](docs/images/pdf.png)][2017AmbrosiniPaper]
 
 
 2. P. Ambrosini, D. Ruijters, W.J. Niessen, A. Moelker and T. van Walsum, "[Continuous Roadmapping in Liver TACE Procedures Using 2D-3D Catheter-based Registration][2015Ambrosini]," International Journal of Computer Assisted Radiology and Surgery, vol. 10, pp. 1357-1370, 2015. [![](docs/images/pdf.png)][2015AmbrosiniPaper]

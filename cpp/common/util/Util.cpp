@@ -111,7 +111,7 @@ BEGIN_Q_NAMESPACE
 
 			// thread test with AVX instructions
 	#ifdef Q_USE_THREAD
-		#define VECTOR_NB_USED_PROCS (7)
+		#define VECTOR_NB_USED_PROCS NB_PROCS
 			{
 				class VectorThread : public qThread{
 				public:
@@ -201,7 +201,7 @@ BEGIN_Q_NAMESPACE
 
 			// thread test with AVX instructions
 	#ifdef Q_USE_THREAD
-		#define MATRIX_NB_USED_PROCS (7)
+		#define MATRIX_NB_USED_PROCS NB_PROCS
 			{
 				class MatrixThread : public qThread{
 				public:
@@ -283,7 +283,7 @@ BEGIN_Q_NAMESPACE
 
 #ifdef USE_PRINT
 	void qPrint(const qchar8 * _format, ...)
-	{	
+	{
 		va_list args;
 		va_start(args, _format);
 

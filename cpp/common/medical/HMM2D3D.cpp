@@ -13,7 +13,7 @@ using namespace std;
 
 #ifdef Q_USE_THREAD
 	#define REGISTRATION_USE_THREAD
-	#define REGISTRATION_NB_USED_PROCS (7)
+	#define REGISTRATION_NB_USED_PROCS NB_PROCS
 #endif
 
 // In the paper alpha function is not mentioned, it is like delta function but with sum instead of max

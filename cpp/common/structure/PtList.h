@@ -67,7 +67,7 @@ BEGIN_Q_NAMESPACE
 	};
 
 	class PtList {
-	public:	
+	public:
 		typedef enum {
 			FLAG_POS_X = (1<<0),
 			FLAG_POS_Y = (1<<1),

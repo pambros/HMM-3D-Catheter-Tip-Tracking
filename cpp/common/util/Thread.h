@@ -25,7 +25,6 @@
 		#define Q_PRINT_THREAD(...)
 	#endif
 
-	// #define NB_PROCS (8)
 	#define NB_PROCS (NB_THREADS)
 
 	#define WAIT_DEFAULT_TIME (3000) // in ms
