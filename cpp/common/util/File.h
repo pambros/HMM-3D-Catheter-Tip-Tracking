@@ -743,6 +743,27 @@ inline qu16 FileSaveU16(qFile *_file, qu16 _val){
 	return 1;
 }
 
+inline qu16 FileReadS16(qFile *_file, qs16 &_val){
+	qString buffer;
+	qu32 ret = FileReadLine(_file, buffer);
+	if(ret != 1){
+		throw gDefaultException;
+		//return 0;
+	}
+
+	_val = atoi(buffer.c_str());
+
+	return 1;
+}
+
+inline qu16 FileSaveS16(qFile *_file, qs16 _val){
+	int iErr = _file->Fprintf("%d\n", _val);
+	if(iErr < 0){
+		throw gDefaultException;
+	}
+	return 1;
+}
+
 inline qu32 FileReadStringList(qFile *_file, std::vector<qString> &_vec){
 	qString buffer;
 	while(FileReadLine(_file, buffer) == 1){

@@ -10,6 +10,7 @@ include_directories("/")
 add_definitions(-DNEED_FILE)
 add_definitions(-DNEED_MATRIX)
 add_definitions(-DNEED_QUATERNION)
+add_definitions(-DNEED_LOG_FUNCTIONS)
 
 set(THIRD_PARTY_SOURCES)
 

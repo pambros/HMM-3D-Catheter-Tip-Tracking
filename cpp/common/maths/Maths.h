@@ -80,6 +80,8 @@ namespace std {
 	#endif
 #endif
 
-#include "thirdParties/numpy/npy_math.h"
+#ifdef NEED_LOG_FUNCTIONS
+	#include "thirdParties/numpy/npy_math.h"
+#endif
 
 #endif
