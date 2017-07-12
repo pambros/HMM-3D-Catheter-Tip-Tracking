@@ -193,7 +193,7 @@ BEGIN_Q_NAMESPACE
 
 			for(VesselDistributionList::iterator it = m_CompleteVesselList.begin(); it != m_CompleteVesselList.end(); ++it){
 				str.clear();
-				qSprintf(buffer, MAX_STR_BUFFER, "%lu\n", (*it)->m_TransitionList.size());
+				qSprintf(buffer, MAX_STR_BUFFER, "%lu\n", static_cast<qu32>((*it)->m_TransitionList.size()));
 				str += qString(buffer);
 
 				for(TransitionList::iterator it2 = (*it)->m_TransitionList.begin(); it2 != (*it)->m_TransitionList.end(); ++it2){

@@ -14,15 +14,17 @@ This code is the implementation of the methods presented in the following papers
 
 ## Prerequisites
 
-Tested on Windows 10 64bits with Microsoft Visual C++ 12.00 2013 update 5 express version.
+Tested on:
+	- Windows 10 64bits with Microsoft Visual C++ 12.00 2013 update 5 express version.
+	- Windows 10 64bits with Microsoft Visual C++ 14.00 2015 update 3 express version.
 It should work on Linux and with other compilers as well.
 
 Note that the multithreading and AVX instructions are only implemented for MSVC for now.
 
 To build the code you need:
 
-- [CMake][cmake] to build the project
-- [ITK library][itk] mainly for the Powell optimizer and ITK image routine
+- [CMake][cmake] to build the project (tested with 3.9.0-rc5)
+- [ITK library][itk] mainly for the Powell optimizer and ITK image routine (tested with 4.12.0)
 
 [cmake]: https://cmake.org/
 [itk]: https://itk.org/

@@ -74,33 +74,10 @@
 
 	#define Q_PAD_ALIGN_32 __declspec(align(32))
 
-inline void* operator new (size_t _size)
-{
-#ifdef _MSC_VER
-	return _aligned_malloc(_size, 32);
-#elif defined(__GNUC__)
-	// return memalign(_size, 32);
-	return aligned_alloc(_size, 32);
-#endif
-}
-
-inline void operator delete (void *_p)
-{
-#ifdef _MSC_VER
-	_aligned_free(_p);
-#elif defined(__GNUC__)
-	free(_p);
-#endif
-}
-
-inline void operator delete[] (void *_p)
-{
-#ifdef _MSC_VER
-	_aligned_free(_p);
-#elif defined(__GNUC__)
-	free(_p);
-#endif
-}
+void* operator new(size_t _size);
+void* operator new[](size_t _size);
+void operator delete(void *_p);
+void operator delete[](void *_p);
 #else
 	#define Q_PAD_ALIGN_32
 #endif

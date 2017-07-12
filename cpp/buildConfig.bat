@@ -35,5 +35,5 @@
 )
 
 @if "%1" neq "-nopause" (
-@pause
+	@pause
 )

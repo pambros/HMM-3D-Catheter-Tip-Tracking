@@ -1,25 +1,29 @@
-@set _MSVC_BIN=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin
-@set _MSVC_BIN_X64=%_MSVC_BIN%\amd64
-@set _CMAKE="C:\Program Files (x86)\CMake\bin\cmake.exe"
+@set _MSVC_DIR=C:/Program Files (x86)/Microsoft Visual Studio 12.0
+@set _MSVC_BIN_DIR=%_MSVC_DIR%/VC/bin
+@set _MSVC_BIN_X64_DIR=%_MSVC_BIN_DIR%/amd64
+
+@set _CMAKE="C:/Program Files (x86)/CMake/bin/cmake.exe"
 
 @rem name of the compiler using cmake syntax
 @set _COMPILER_NAME="Visual Studio 12 2013 Win64"
 
 @set _CPU=x64
 
-@set _ITK_DIR=C:/libs/itk
-@set _ITK_BIN=%_ITK_DIR%/bin
+@set _ITK_BUILD_DIR=C:/libs/itk
+@set _ITK_BIN_DIR=%_ITK_BUILD_DIR%/bin
 
 @set PATH= 
-@set PATH=%PATH%;C:\Windows\system32
-@set PATH=%PATH%;%_MSVC_BIN_X64%
-@set PATH=%PATH%;%_MSVC_BIN%
+@set PATH=%PATH%;C:/Windows/system32
+@set PATH=%PATH%;%_MSVC_BIN_X64_DIR%
+@set PATH=%PATH%;%_MSVC_BIN_DIR%
+@set VS150COMNTOOLS= 
 @set VS140COMNTOOLS= 
-@set VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+@set VS120COMNTOOLS=%_MSVC_DIR%/Common7/Tools/
 @set VS110COMNTOOLS= 
+@set VS100COMNTOOLS= 
 
 @rem ************************************** for TACE
-@set PATH=%PATH%;%_ITK_BIN%
+@set PATH=%PATH%;%_ITK_BIN_DIR%
 
-@set _TACELIB_PATH=%_PROJECT_PATH%/cpp/generated/%_USER_SPECIFIC%/Release
-@set _TACE_EXE=%_TACELIB_PATH%/TACE.exe
+@set _TACELIB_DIR=%_PROJECT_PATH%/cpp/generated/%_USER_SPECIFIC%/Release
+@set _TACE=%_TACELIB_DIR%/TACE.exe

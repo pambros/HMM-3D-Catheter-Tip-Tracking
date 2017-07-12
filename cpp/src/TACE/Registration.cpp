@@ -46,7 +46,7 @@ int Registration(int _argc, char **_argv){
 		registration2D3D->Register();
 
 		qchar8 resultFileName[MAX_STR_BUFFER];
-		qSprintf(resultFileName, MAX_STR_BUFFER, "%s/result%d.txt", outputFolder.c_str(), registration2D3D->m_CurrentFrame);
+		qSprintf(resultFileName, MAX_STR_BUFFER, "%s/result%d.txt", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
 		registration2D3D->m_Object2D3DRegistration->m_FusionResult.Save(resultFileName);
 
 #ifdef USE_ITK
@@ -65,7 +65,7 @@ int Registration(int _argc, char **_argv){
 			vessels.Transform(infoFluoro.m_FluoroPixelToMM.inverse());
 
 			// draw all the point of the 3D vessel
-			qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationAllVesselPoints%d.png", outputFolder.c_str(), registration2D3D->m_CurrentFrame);
+			qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationAllVesselPoints%d.png", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
 			Draw2DCatheterAnd3DVessels(catheter, &vessels, resultFileName);
 
 			// draw only point of the 3D vessel after the tip position
@@ -78,7 +78,7 @@ int Registration(int _argc, char **_argv){
 				Vessels *subVessels = NULL;
 				vessels.Get3dVesselsSubTree(tipId, Q_TRUE, subVessels);
 
-				qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationForwardPoints%d.png", outputFolder.c_str(), registration2D3D->m_CurrentFrame);
+				qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationForwardPoints%d.png", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
 				Draw2DCatheterAnd3DVessels(catheter, subVessels, resultFileName);
 
 				SAFE_DELETE_UNIQUE(subVessels);

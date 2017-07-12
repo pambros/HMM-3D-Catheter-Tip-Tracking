@@ -11,6 +11,7 @@
 //const float_ SplineFitter::MARGIN=10E-3f;
 
 #include <list>
+#include <iterator>
 #include "math.h"
 
 #include "float.h"

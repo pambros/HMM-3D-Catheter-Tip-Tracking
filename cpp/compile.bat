@@ -14,5 +14,5 @@ cd generated/%_USER_SPECIFIC%
 )
 
 @if "%1" neq "-nopause" (
-@pause
+	@pause
 )
