@@ -25,5 +25,5 @@
 @rem ************************************** for TACE
 @set PATH=%PATH%;%_ITK_BIN_DIR%
 
-@set _TACELIB_DIR=%_PROJECT_PATH%/cpp/generated/%_USER_SPECIFIC%/Release
-@set _TACE=%_TACELIB_DIR%/TACE.exe
+@set _TACE_BIN_DIR=%_PROJECT_PATH%/cpp/generated/%_USER_SPECIFIC%/Release
+@set _TACE=%_TACE_BIN_DIR%/TACE.exe
