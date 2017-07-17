@@ -11,7 +11,7 @@ This code is the implementation of the methods presented in the following papers
 [2015Ambrosini]: https://dx.doi.org/10.1007/s11548-015-1218-x
 [2015AmbrosiniPaper]: https://drive.google.com/open?id=0B3KoSrMZcykNcGdpYlhvT2pEN0E
 
-![](docs/images/hmmWorkflow.png)
+![](docs/images/hmmWorkflow.jpg)
 
 ## Prerequisites
 
