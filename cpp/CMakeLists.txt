@@ -150,6 +150,8 @@ target_link_libraries(
 
 add_executable(
 	TACE
+	src/TACE/ImageTlk.cpp
+	src/TACE/ImageTlk.h
 	src/TACE/main.cpp
 	src/TACE/Registration.cpp
 	src/TACE/Registration.h
@@ -161,8 +163,6 @@ add_executable(
 	src/TACE/TransformPtList.h
 	src/TACE/TransformVessels.cpp
 	src/TACE/TransformVessels.h
-	src/TACE/ImageTlk.cpp
-	src/TACE/ImageTlk.h
 )
 
 target_link_libraries(
