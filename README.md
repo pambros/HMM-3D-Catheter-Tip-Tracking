@@ -94,15 +94,15 @@ Output can be checked in the files `generated/stderrHMMPowell.txt` and `generate
 
 ### Configuration file
 
-The configuration files in the examples have the following parameters:
+The configuration file in the examples has the following parameters:
 
 - m_Method (METHOD_SHAPE_SIMILARITY = 0, METHOD_HMM = 1)
 	- METHOD_SHAPE_SIMILARITY: 2D/3D registration method using shape similarity [2].
 	- METHOD_HMM: 2D/3D registration method using hidden Markov model [1].
 
 - m_Optimizer (OPTIMIZER_BRUTE_FORCE = 0, OPTIMIZER_POWELL = 1)
-	- OPTIMIZER_BRUTE_FORCE: is an exhaustive search, detail of the method is described in [2] (slow, more accurate).
-	- OPTIMIZER_POWELL: is the Powell optimizer (fast, less accurate if not initialized carefully).
+	- OPTIMIZER_BRUTE_FORCE: It is an exhaustive search, detail of the method is described in [2] (slow, more accurate).
+	- OPTIMIZER_POWELL: It is the Powell optimizer (fast, less accurate if not initialized carefully).
 
 - m_DistanceUsed (DISTANCE_SQR = 0, DISTANCE_ABSOLUTE = 1, DISTANCE_EUCLIDEAN = 2): Specify how is compute the minimum distance between points.
 	- DISTANCE_SQR: Square distance (fast).
@@ -156,7 +156,7 @@ The structure of the 3D vessel is text file with the following lines:
 - last point position, direction, radius and orthogonal direction (direction and radius are a rough estimation) separated by a ';'
 - point id neighbors of the last point separated by a ';'
 
-Example: vessel with three points. The first point is the root and is linked to the two other points.
+Example: Vessel with three points. The first point is the root and is linked to the two other points.
 ```
 3
 0
