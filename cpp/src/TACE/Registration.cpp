@@ -52,10 +52,10 @@ int Registration(int _argc, char **_argv){
 #ifdef USE_ITK
 		// save the overlay of the 3D registered vessel on the 2D X-ray image
 		if(outputDebugImages == "-debugImages"){
-			PtList catheter(registration2D3D->m_DataList.m_CatheterCenterlineList[registration2D3D->m_CurrentFrame]);
+			PtList catheter(registration2D3D->m_DataList->m_CatheterCenterlineList[registration2D3D->m_CurrentFrame]);
 
 			// draw the 3D vessel centerline in the 2D coordinate space
-			InfoFluoro infoFluoro(registration2D3D->m_DataList.m_InfoFluoroFileName.c_str());
+			InfoFluoro infoFluoro(registration2D3D->m_DataList->m_InfoFluoroFileName.c_str());
 
 			Vessels vessels(registration2D3D->m_Object2D3DRegistration->m_Vessels);
 			Matrix44 &matRegistration = registration2D3D->m_Object2D3DRegistration->m_FusionResult.m_RigidTransform3DInWorldCS[0];

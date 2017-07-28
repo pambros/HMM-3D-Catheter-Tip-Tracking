@@ -17,12 +17,12 @@ This code is the implementation of the methods presented in the following papers
 
 Tested on:
 
-- Windows 10 64bits with Microsoft Visual C++ 12.00 2013 update 5 express version
-- Windows 10 64bits with Microsoft Visual C++ 14.00 2015 update 3 express version
+- Windows 10 64bits with:
+	- Microsoft Visual C++ 14.00 2015 update 3 express version
+	- Microsoft Visual C++ 12.00 2013 update 5 express version
+	- MinGW-w64 and GCC 5.4.0
 
-It should work on Linux and with other compilers as well.
-
-Note that the multithreading and AVX instructions are only implemented for MSVC for now.
+It should work on Unix-like systems as well with small changes (not tested). Note that multithreading and AVX instructions are not fully supported.
 
 To build the code you need:
 

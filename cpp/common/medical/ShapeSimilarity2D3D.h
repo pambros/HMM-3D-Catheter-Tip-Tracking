@@ -11,7 +11,8 @@ public:
 	ShapeSimilarity2D3D(OPTIMIZER_ENUM _optimizer, const q::qString &_paramFileName, q::Vessels *_vessels, const q::qString &_info3DRAFileName);
 	ShapeSimilarity2D3D(OPTIMIZER_ENUM _optimizer, const q::qString &_paramFileName, const q::qString &_vesselsFileName, const q::qString &_info3DRAFileName);
 	~ShapeSimilarity2D3D(void);
-	int Do2D3DRegistration(q::PtList &_catheter, q::InfoFluoro &_infoFluoro);
+	// be careful _catheter is modified
+	int Do2D3DRegistration(q::PtList &_catheter, const q::InfoFluoro &_infoFluoro);
 
 public:
 	q::ShapeSimilarity *m_ShapeSimilarity;

@@ -9,6 +9,7 @@ BEGIN_Q_NAMESPACE
 class DataList{
 public:
 	DataList(const qString &_dataFolder){
+		m_OnlineRegistration = Q_FALSE;
 		m_DataFolder = _dataFolder;
 		qString dataFolder = _dataFolder + qString("/");
 
@@ -59,6 +60,14 @@ public:
 		qFClose(file);
 	}
 
+	DataList(const qString &_vessel3DFilename, const qString &_3DRAinfoFilename, qu32 _tipPosition){
+		m_OnlineRegistration = Q_TRUE;
+		m_Info3draFileName = _3DRAinfoFilename;
+		m_Vessel3draFileName = _vessel3DFilename;
+		m_InitializeFromTipPosition = Q_TRUE;
+		m_TipPositionId = _tipPosition;
+	}
+
 	/*void PrintDebug(void){
 		qPrint("m_DataFolder %s\n", m_DataFolder.c_str());
 		qPrint("m_Info3draFileName %s\n", m_Info3draFileName.c_str());
@@ -78,6 +87,7 @@ public:
 	qu32 m_TipPositionId;
 	qString m_FirstFusion;
 	qString m_InfoFluoroFileName;
+	qbool m_OnlineRegistration;
 	qu32 m_NbFrame;
 	qString m_CatheterCenterlineFileName;
 	std::vector<qString> m_CatheterCenterlineList;
@@ -126,16 +136,24 @@ public:
 		//qbool m_UsePreviousRegistration;
 	};
 
+private:
+	void InitRegistration2D3D(const qString &_confileFile);
+
+public:
+	Q_DLL Registration2D3D(const qString &_confileFile, const qString &_vessel3DFilename, const qString &_3DRAinfoFilename, qu32 _tipPosition);
 	Q_DLL Registration2D3D(const qString &_confileFile, const qString &_dataFolder);
 	Q_DLL ~Registration2D3D();
 
 	// Compute a 2D/3D registration
+	// be careful _catheter is modified
+	Q_DLL void Register(PtList &_catheter, const InfoFluoro &_infoFluoro);
 	Q_DLL void Register(void);
 
 	// If there is still frame to register, return 0.
 	// If there is no frame anymore to register, return -1.
 	qs32 NextFrame(void){
-		if(m_CurrentFrame < m_DataList.m_NbFrame - 1){
+		qAssert(m_DataList->m_OnlineRegistration == Q_FALSE);
+		if(m_CurrentFrame < m_DataList->m_NbFrame - 1){
 			m_CurrentFrame = m_CurrentFrame + 1;
 			return 0;
 		}
@@ -143,7 +161,7 @@ public:
 	}
 
 	Parameters *m_Parameters;
-	DataList m_DataList;
+	DataList *m_DataList;
 	Object2D3D *m_Object2D3DRegistration;
 
 	qsize_t m_CurrentFrame;

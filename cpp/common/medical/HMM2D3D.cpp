@@ -103,7 +103,8 @@ HMM2D3D::~HMM2D3D(void){
 	SAFE_DELETE_UNIQUE(m_Vstp);
 }
 
-int HMM2D3D::Do2D3DRegistration(PtList &_catheter, InfoFluoro &_infoFluoro){
+// be careful _catheter is modified
+int HMM2D3D::Do2D3DRegistration(PtList &_catheter, const InfoFluoro &_infoFluoro){
 	PtList vesselsPtl;
 	PtList &catheter = _catheter;
 

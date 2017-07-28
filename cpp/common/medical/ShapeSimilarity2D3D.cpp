@@ -26,7 +26,8 @@ ShapeSimilarity2D3D::~ShapeSimilarity2D3D(void){
 	SAFE_DELETE_UNIQUE(m_ShapeSimilarity);
 }
 
-int ShapeSimilarity2D3D::Do2D3DRegistration(PtList &_catheter, InfoFluoro &_infoFluoro){
+// be careful _catheter is modified
+int ShapeSimilarity2D3D::Do2D3DRegistration(PtList &_catheter, const InfoFluoro &_infoFluoro){
 	PtList vesselsPtl;
 
 	m_ShapeSimilarity->m_ScoresList.clear();

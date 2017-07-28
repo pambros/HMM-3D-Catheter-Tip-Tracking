@@ -19,7 +19,8 @@ public:
 	Object2D3D(OPTIMIZER_ENUM _optimizer, const q::qString &_paramFileName, q::Vessels *_vessels, const q::qString &_info3DRAFileName);
 	Object2D3D(OPTIMIZER_ENUM _optimizer, const q::qString &_paramFileName, const q::qString &_vesselsFileName, const q::qString &_info3DRAFileName);
 	virtual ~Object2D3D(void);
-	virtual int Do2D3DRegistration(q::PtList &_catheter, q::InfoFluoro &_infoFluoro) = 0;
+	// be careful _catheter is modified
+	virtual int Do2D3DRegistration(q::PtList &_catheter, const q::InfoFluoro &_infoFluoro) = 0;
 
 public:
 	q::Vessels *m_Vessels;

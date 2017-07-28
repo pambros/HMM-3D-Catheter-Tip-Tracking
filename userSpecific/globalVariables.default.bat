@@ -1,24 +1,30 @@
-@set _MSVC_DIR=C:/Program Files (x86)/Microsoft Visual Studio 12.0
+@set _UTIL_DIR=C:/Programs
+
+@set _MSVC_DIR=%_UTIL_DIR%/Microsoft Visual Studio 14.0
 @set _MSVC_BIN_DIR=%_MSVC_DIR%/VC/bin
 @set _MSVC_BIN_X64_DIR=%_MSVC_BIN_DIR%/amd64
+@set _MSVC_BIN_X86_AMD64_DIR=%_MSVC_BIN_DIR%/x86_amd64
 
-@set _CMAKE="C:/Program Files (x86)/CMake/bin/cmake.exe"
+@set _CMAKE="%_UTIL_DIR%/CMake/bin/cmake.exe"
 
 @rem name of the compiler using cmake syntax
-@set _COMPILER_NAME="Visual Studio 12 2013 Win64"
+@set _COMPILER_NAME="Visual Studio 14 2015 Win64"
 
 @set _CPU=x64
 
-@set _ITK_BUILD_DIR=C:/libs/itk
+@set _LIBS_DIR=C:/Libs
+
+@set _ITK_BUILD_DIR=%_LIBS_DIR%/itk
 @set _ITK_BIN_DIR=%_ITK_BUILD_DIR%/bin
 
 @set PATH= 
 @set PATH=%PATH%;C:/Windows/system32
 @set PATH=%PATH%;%_MSVC_BIN_X64_DIR%
+@set PATH=%PATH%;%_MSVC_BIN_X86_AMD64_DIR%
 @set PATH=%PATH%;%_MSVC_BIN_DIR%
 @set VS150COMNTOOLS= 
-@set VS140COMNTOOLS= 
-@set VS120COMNTOOLS=%_MSVC_DIR%/Common7/Tools/
+@set VS140COMNTOOLS=%_MSVC_DIR%/Common7/Tools/
+@set VS120COMNTOOLS= 
 @set VS110COMNTOOLS= 
 @set VS100COMNTOOLS= 
 
