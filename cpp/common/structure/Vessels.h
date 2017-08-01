@@ -107,7 +107,7 @@ BEGIN_Q_NAMESPACE
 
 	private:
 		inline void Init(void){
-			memset(m_Data, 0, INFO_COUNT*sizeof(m_Data[0]));
+			qMemset(m_Data, 0, INFO_COUNT*sizeof(m_Data[0]));
 			m_Flag = Q_FALSE;
 			m_Flag2 = Q_FALSE;
 		}

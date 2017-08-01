@@ -34,7 +34,7 @@ ImageType::Pointer CreateImage(qsize_t _x, qsize_t _y){
 	img->Allocate();
 
 	RGBPixelType* buffer = img->GetBufferPointer();
-	memset(buffer, 0, sizeof(RGBPixelType)*_x*_y);
+	qMemset(buffer, 0, sizeof(RGBPixelType)*_x*_y);
 
 	return img;
 }
@@ -68,16 +68,16 @@ void DrawLine(ImageType::Pointer _img, q::qu32 _x1, q::qu32 _y1, q::qu32 _x2, q:
 
 	ImageType::IndexType pixelIndex;
 	if(_x1 == _x2){
-		pixelIndex[1] = _x1;
+		pixelIndex[0] = _x1;
 		for(qsize_t i = _y1; i <= _y2; ++i){
-			pixelIndex[0] = i;
+			pixelIndex[1] = i;
 			_img->SetPixel(pixelIndex, _color);
 		}
 	}
 	else if(_y1 == _y2){
-		pixelIndex[0] = _y1;
+		pixelIndex[1] = _y1;
 		for (qsize_t i = _x1; i <= _x2; ++i) {
-			pixelIndex[1] = i;
+			pixelIndex[0] = i;
 			_img->SetPixel(pixelIndex, _color);
 		}
 	}

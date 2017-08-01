@@ -113,7 +113,7 @@ void MultiParameterSearchThread::run(void){
 	memcpy(currentPos, m_CenterPos, nbParameters*sizeof(*currentPos));
 
 	while(m_Step != STEP_END){
-		memset(id, 0, nbParameters*sizeof(*id));
+		qMemset(id, 0, nbParameters*sizeof(*id));
 		id[0] = id0;
 		
 		qu32 currentParam = nbParameters;
@@ -285,7 +285,7 @@ void MultiParameterSearch::Apply(void){
 	memcpy(currentPos, centerPos, nbParameters*sizeof(*currentPos));
 
 	while(nbIterations != 0){
-		memset(id, 0, nbParameters*sizeof(*id));
+		qMemset(id, 0, nbParameters*sizeof(*id));
 		
 		qu32 currentParam = nbParameters;
 #ifdef __DEBUG_PRINT

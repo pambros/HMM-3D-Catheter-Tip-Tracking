@@ -69,6 +69,7 @@ Registration2D3D::Registration2D3D(const qString &_confileFile, const qString &_
 }
 
 Registration2D3D::~Registration2D3D(){
+	//qPrint("Registration2D3D::~Registration2D3D\n");
 	SAFE_DELETE_UNIQUE(m_Object2D3DRegistration);
 	SAFE_DELETE_UNIQUE(m_Parameters);
 	SAFE_DELETE_UNIQUE(m_DataList);
