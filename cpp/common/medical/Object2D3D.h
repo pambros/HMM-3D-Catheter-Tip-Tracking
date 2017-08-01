@@ -13,6 +13,7 @@ enum OPTIMIZER_ENUM{
 
 class Object2D3D{
 private:
+	// be careful m_Vessels is transformed in mm coordinate space (m_Vessels->Transform(m_Info3DRA.m_3DRAPixelToMM))
 	void Init(OPTIMIZER_ENUM _optimizer, const q::qString &_paramFileName, q::Vessels *_vessels, const q::qString &_info3DRAFileName);
 
 public:

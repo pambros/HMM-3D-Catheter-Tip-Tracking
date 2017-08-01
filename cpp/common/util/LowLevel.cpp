@@ -94,4 +94,9 @@ qs32 CharToHexa(qu8 _char)
 	}
 	return 0;
 }
+
+qu32 IsLittleEndian(void){
+	static const qu32 NL_AT_END = 0x000A;
+	return ((char*)(void*)&NL_AT_END)[0] == '\n';
+}
 END_Q_NAMESPACE

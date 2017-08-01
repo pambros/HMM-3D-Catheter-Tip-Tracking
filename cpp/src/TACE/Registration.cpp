@@ -3,29 +3,13 @@
 #include "common/util/UtilTime.h"
 #include "common/medical/Registration2D3D.h"
 
-#include "ImageTlk.h"
+#ifdef USE_ITK
+	#include "common/image/ImageItk.h"
+	#include "common/medical/Roadmapping.h"
+#endif
 
 USING_Q_NAMESPACE
 using namespace std;
-
-#ifdef USE_ITK
-	#define DRAW_PT_RADIUS (2)
-	#define OFFSET_TIP_ID (13)
-
-void Draw2DCatheterAnd3DVessels(PtList _catheter, Vessels *_vessels, const qString &_fileName){
-	ImageType::Pointer img = CreateImage(1024, 1024);
-	
-	PtList vesselPtList;
-	_vessels->GetPtList(vesselPtList);
-	RGBPixelType::ComponentType colorGreen[3] = { 0, 255, 0 };
-	DrawPtList(img, vesselPtList, DRAW_PT_RADIUS, RGBPixelType(colorGreen));
-
-	RGBPixelType::ComponentType colorRed[3] = { 255, 0, 0 };
-	DrawPtList(img, _catheter, DRAW_PT_RADIUS, RGBPixelType(colorRed));
-
-	SavePNGImage(img, _fileName);
-}
-#endif
 
 int Registration(int _argc, char **_argv){
 	qPrint("# Registration\n");
@@ -58,31 +42,22 @@ int Registration(int _argc, char **_argv){
 			InfoFluoro infoFluoro(registration2D3D->m_DataList->m_InfoFluoroFileName.c_str());
 
 			Vessels vessels(registration2D3D->m_Object2D3DRegistration->m_Vessels);
-			Matrix44 &matRegistration = registration2D3D->m_Object2D3DRegistration->m_FusionResult.m_RigidTransform3DInWorldCS[0];
-			vessels.Transform(matRegistration);
-			vessels.Transform(infoFluoro.m_WorldToCArm);
-			vessels.Transform(infoFluoro.m_CArmProjection, Q_TRUE);
+			Matrix44 matRegistration = registration2D3D->m_Object2D3DRegistration->m_FusionResult.m_RigidTransform3DInWorldCS[0];
+			matRegistration = infoFluoro.m_CArmProjection*infoFluoro.m_WorldToCArm*matRegistration;
+			vessels.Transform(matRegistration, Q_TRUE);
 			vessels.Transform(infoFluoro.m_FluoroPixelToMM.inverse());
 
 			// draw all the point of the 3D vessel
+			ImageType::Pointer img = CreateImage(1024, 1024);
+			Draw2DCatheterAnd3DVessels(img, catheter, vessels);
 			qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationAllVesselPoints%d.png", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
-			Draw2DCatheterAnd3DVessels(catheter, &vessels, resultFileName);
+			SavePNGImage(img, resultFileName);
 
 			// draw only point of the 3D vessel after the tip position
-			{
-				// get point id where the tip is
-				qu32 tipId = registration2D3D->m_Object2D3DRegistration->m_FusionResult.m_FusionTipVesselId[0];
-				// we have an offset to give a bit of delay before to remove vessel branches close-by behind the tip position
-				tipId = vessels.GetPreviousVesselId(tipId, OFFSET_TIP_ID);
-
-				Vessels *subVessels = NULL;
-				vessels.Get3dVesselsSubTree(tipId, Q_TRUE, subVessels);
-
-				qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationForwardPoints%d.png", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
-				Draw2DCatheterAnd3DVessels(catheter, subVessels, resultFileName);
-
-				SAFE_DELETE_UNIQUE(subVessels);
-			}
+			img = CreateImage(1024, 1024);
+			Draw2DCatheterAnd3DVesselsAfterTheTipPosition(img, catheter, vessels, registration2D3D->m_Object2D3DRegistration->m_FusionResult);
+			qSprintf(resultFileName, MAX_STR_BUFFER, "%s/imgRegistrationForwardPoints%d.png", outputFolder.c_str(), static_cast<qs32>(registration2D3D->m_CurrentFrame));
+			SavePNGImage(img, resultFileName);
 		}
 #endif
 

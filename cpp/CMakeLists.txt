@@ -88,6 +88,16 @@ list(APPEND THIRD_PARTY_SOURCES
 	${TRLIB_PATH}thirdParties/numpy/npy_math.h	
 )
 
+set(TACELIB_SPECIFIC_SOURCES)
+if(USE_ITK)
+	list(APPEND TACELIB_SPECIFIC_SOURCES
+	${TACELIB_PATH}common/image/ImageItk.cpp
+	${TACELIB_PATH}common/image/ImageItk.h
+	
+	${TACELIB_PATH}common/medical/Roadmapping.cpp
+	${TACELIB_PATH}common/medical/Roadmapping.h)
+endif(USE_ITK)
+
 add_library(
 	# TACELib STATIC
 	TACELib SHARED
@@ -139,6 +149,7 @@ add_library(
 	${TACELIB_PATH}common/util/UtilTime.cpp
 	${TACELIB_PATH}common/util/UtilTime.h
 	
+	${TACELIB_SPECIFIC_SOURCES}
 	${THIRD_PARTY_SOURCES}
 )
 
@@ -153,8 +164,6 @@ target_link_libraries(
 
 add_executable(
 	TACE
-	src/TACE/ImageTlk.cpp
-	src/TACE/ImageTlk.h
 	src/TACE/main.cpp
 	src/TACE/Registration.cpp
 	src/TACE/Registration.h
