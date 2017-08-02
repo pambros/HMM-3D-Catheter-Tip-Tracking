@@ -331,7 +331,7 @@ public:
 				/*iErr =*/ FileSaveString(file, "# m_Rows // in pixel\n");
 				/*iErr =*/ FileSaveU16(file, m_Rows);
 				/*iErr =*/ FileSaveString(file, "# m_Columns // in pixel\n");
-				/*iErr =*/ FileSaveF64(file, m_Columns);
+				/*iErr =*/ FileSaveU16(file, m_Columns);
 				/*iErr =*/ FileSaveString(file, "# m_DistanceSourceToDetector // in mm\n");
 				/*iErr =*/ FileSaveF64(file, m_DistanceSourceToDetector);
 				/*iErr =*/ FileSaveString(file, "# m_DistanceSourceToPatient // in mm\n");
