@@ -15,11 +15,7 @@ using namespace std;
 BEGIN_Q_NAMESPACE
 
 qu32 Base2D3DRegistration::LoadParameters(qFile *_file){
-	qu32 iErr = FileReachLine(_file, qString("#\tBase2D3DParameters"));	
-	//iErr = FileReadMatrix44(_file, GetBaseParameters()->m_CArmProjection);
-	//iErr = FileReadMatrix44(_file, GetBaseParameters()->m_WorldToCArm);
-	//iErr = FileReadMatrix44(_file, GetBaseParameters()->m_IsoCenterToCArm);
-	//iErr = FileReadMatrix44(_file, GetBaseParameters()->m_TransformInWorldCS);
+	qu32 iErr = FileReachLine(_file, qString("#\tBase2D3DParameters"));
 	iErr = FileReadU32(_file, GetBaseParameters()->m_DistanceUsed);
 	iErr = FileReadU32(_file, GetBaseParameters()->m_MetricUsed);
 	iErr = FileReadF64(_file, GetBaseParameters()->m_Dmax);
@@ -93,7 +89,7 @@ void Base2D3DRegistration::PreApply(const q::PtList &_2dCatheter, const q::PtLis
 	PrintMatrix(GetBaseParameters()->m_WorldToCArm);
 #endif
 
-	if(m_useContinuousMethod == Q_FALSE){
+	if(m_ComputeRigidTransformInSupposedTipSpace == Q_FALSE){
 		m_CArmToIsoCenter = GetBaseParameters()->m_IsoCenterToCArm.inverse();
 	}
 	else{
@@ -105,24 +101,12 @@ void Base2D3DRegistration::PreApply(const q::PtList &_2dCatheter, const q::PtLis
 }
 
 void Base2D3DRegistration::PostApply(const q::Matrix44 &_mat, qu32 _nbProcUsed){
-	if(m_useContinuousMethod == Q_FALSE){
 #ifdef COMPUTE_RIGID_TRANSFORM_IN_CARM_SPACE
-		// if the rigid transform is in the c-arm
-		m_RigidTransform3DInCarmCS = Matrix44::getIdentity(); //_mat; // TODO this matrix is not good because m_TransformInWorldCS isn't taken into account
-		Matrix44 matCArmToWorld = GetBaseParameters()->m_WorldToCArm.inverse();
-		//_mat = matCArmToWorld*_mat*GetBaseParameters()->m_WorldToCArm;
-		//Matrix44 matCArmToTransform = m_TransformToCArm.inverse();
-		//_mat = matCArmToTransform*_mat*m_TransformToCArm;
-		m_RigidTransform3DInWorldCS = matCArmToWorld*_mat*m_TransformToCArm;
+	Matrix44 matCArmToWorld = GetBaseParameters()->m_WorldToCArm.inverse();
+	m_RigidTransform3DInWorldCS = matCArmToWorld*_mat*m_TransformToCArm;
 #else
-		// if the rigid transform is in the world CS
-		m_RigidTransform3DInWorldCS = _mat*GetBaseParameters()->m_TransformInWorldCS;
+	m_RigidTransform3DInWorldCS = _mat*GetBaseParameters()->m_TransformInWorldCS;
 #endif
-	}
-	else{
-		Matrix44 matCArmToWorld = GetBaseParameters()->m_WorldToCArm.inverse();
-		m_RigidTransform3DInWorldCS = matCArmToWorld*_mat*m_TransformToCArm;
-	}
 
 	Q_PRINT_DEBUG("bestFittingMetric final %f\n", m_FittingScore);
 
@@ -154,7 +138,7 @@ void Base2D3DRegistration::Init(void){
 	m_Pt3dTo2d = NULL;
 	m_FittingScore = UTIL_BIG_NEGATIVE_NUMBER;
 	
-	m_useContinuousMethod = Q_FALSE;
+	m_ComputeRigidTransformInSupposedTipSpace = Q_FALSE;
 }
 
 #include "DefineDistanceMetric.h"
@@ -165,9 +149,17 @@ q::Matrix44 Base2D3DRegistration::GetRigidTransform(q::qf64 _x, q::qf64 _y, q::q
 	translation[0][3] = _x;
 	translation[1][3] = _y;
 	translation[2][3] = _z;
-	if(m_useContinuousMethod == Q_FALSE){
+	if(m_ComputeRigidTransformInSupposedTipSpace == Q_FALSE){
+#ifdef COMPUTE_RIGID_TRANSFORM_IN_CARM_SPACE
 		return translation*GetBaseParameters()->m_IsoCenterToCArm*GetRotationAlphaBetaGamma(_alpha, _beta, _gamma)*m_CArmToIsoCenter;
+#else
+		return translation*GetRotationAlphaBetaGamma(_alpha, _beta, _gamma);
+#endif
 	}
+#ifdef COMPUTE_RIGID_TRANSFORM_IN_CARM_SPACE
 	return m_SupposedTipToCArm*translation*GetRotationAlphaBetaGamma(_alpha, _beta, _gamma)*m_CArmToSupposedTip;
+#else
+	return m_SupposedTipToWorld*translation*GetRotationAlphaBetaGamma(_alpha, _beta, _gamma)*m_WorldToSupposedTip;
+#endif
 }
 END_Q_NAMESPACE

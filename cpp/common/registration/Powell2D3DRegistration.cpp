@@ -206,7 +206,7 @@ void Powell2D3DRegistration::Apply(const q::PtList &_2dCatheter, const q::PtList
 	vnl_vector<qf64> parametersTranslation = vnl_vector<qf64>(2);
 	parametersTranslation[0] = 0.0;
 	parametersTranslation[1] = 0.0;
-	if(m_useContinuousMethod == Q_FALSE){
+	if(m_ComputeRigidTransformInSupposedTipSpace == Q_FALSE){
 		if(m_Parameters->m_OnlyTranslation == true || m_Parameters->m_TranslationThenRotation == true){
 			MetricCallbackVNLCostFunctionTranslation costFunctionTranslation(metricCallback);
 			vnl_powell powellOptimizerTranslation(&costFunctionTranslation);

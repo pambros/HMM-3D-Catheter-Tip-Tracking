@@ -93,8 +93,8 @@
 		// do the rigid transform in the c-arm CS
 		//mat = mat*GetBaseParameters()->m_WorldToCArm;
 		mat = mat*m_TransformToCArm;
-		#else
-		// do the rigid transform in the world CS
+		#else // do the rigid transform in the world CS
+		mat = mat*GetBaseParameters()->m_TransformInWorldCS;
 		#endif
 
 		// compute all pt3dto2d

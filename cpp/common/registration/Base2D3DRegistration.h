@@ -145,12 +145,11 @@ BEGIN_Q_NAMESPACE
 
 	public:
 		// input
-		qbool m_useContinuousMethod;
+		qbool m_ComputeRigidTransformInSupposedTipSpace; // in this case, we need to set m_WorldToSupposedTip, the transform from the world space to the supposed tip space
 		Matrix44 m_WorldToSupposedTip;
 
 		// output
 		Matrix44 m_RigidTransform3DInWorldCS;
-		Matrix44 m_RigidTransform3DInCarmCS;
 		qf64 m_FittingScore;
 	};
 END_Q_NAMESPACE

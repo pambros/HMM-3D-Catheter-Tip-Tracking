@@ -114,7 +114,7 @@ int HMM2D3D::Do2D3DRegistration(PtList &_catheter, const InfoFluoro &_infoFluoro
 	m_Base2D3DRegistration->GetBaseParameters()->m_WorldToCArm = _infoFluoro.m_WorldToCArm;
 	m_Base2D3DRegistration->GetBaseParameters()->m_CArmProjection = _infoFluoro.m_CArmProjection;
 	m_Base2D3DRegistration->GetBaseParameters()->m_IsoCenterToCArm = _infoFluoro.m_IsoCenterToCArm;
-	m_Base2D3DRegistration->GetBaseParameters()->m_TransformInWorldCS = m_PreviousTransformInWorldCS;
+	//m_Base2D3DRegistration->GetBaseParameters()->m_TransformInWorldCS = m_PreviousTransformInWorldCS; // it's done later
 
 	m_FusionResult = FusionResult();
 
@@ -360,7 +360,7 @@ int HMM2D3D::Do2D3DRegistration(PtList &_catheter, const InfoFluoro &_infoFluoro
 #endif
 
 		// optimization to fit with the catheter
-		base2D3DRegistrationTmp->m_useContinuousMethod = Q_TRUE;
+		base2D3DRegistrationTmp->m_ComputeRigidTransformInSupposedTipSpace = Q_TRUE;
 //#define BREATHING_ON_THE_TABLE_PLANE
 #ifdef BREATHING_ON_THE_TABLE_PLANE
 		base2D3DRegistrationTmp->GetBaseParameters()->m_TransformInWorldCS = m_PreviousTransformInWorldCS*translationToTip;

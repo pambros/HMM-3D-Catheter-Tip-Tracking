@@ -192,10 +192,10 @@ public:
 	void Init(qu16 _rows, qu16 _columns, qf64 _distanceSourceToDetector, qf64 _distanceSourceToPatient
 		, qf64 _primaryAngle, qf64 _secondaryAngle, qf64 _pixelSpacingX, qf64 _pixelSpacingY){
 
-		m_FluoroPixelToMM[0][0] = _pixelSpacingX; m_FluoroPixelToMM[0][1] = 0.0;           m_FluoroPixelToMM[0][2] = 0.0; m_FluoroPixelToMM[0][3] = 0.0;
-		m_FluoroPixelToMM[1][0] = 0.0;           m_FluoroPixelToMM[1][1] = _pixelSpacingY; m_FluoroPixelToMM[1][2] = 0.0; m_FluoroPixelToMM[1][3] = 0.0;
-		m_FluoroPixelToMM[2][0] = 0.0;           m_FluoroPixelToMM[2][1] = 0.0;           m_FluoroPixelToMM[2][2] = 1.0; m_FluoroPixelToMM[2][3] = 0.0;
-		m_FluoroPixelToMM[3][0] = 0.0;           m_FluoroPixelToMM[3][1] = 0.0;           m_FluoroPixelToMM[3][2] = 0.0; m_FluoroPixelToMM[3][3] = 1.0;
+		m_FluoroPixelToMM[0][0] = _pixelSpacingX;m_FluoroPixelToMM[0][1] = 0.0;           m_FluoroPixelToMM[0][2] = 0.0;m_FluoroPixelToMM[0][3] = 0.0;
+		m_FluoroPixelToMM[1][0] = 0.0;           m_FluoroPixelToMM[1][1] = _pixelSpacingY;m_FluoroPixelToMM[1][2] = 0.0;m_FluoroPixelToMM[1][3] = 0.0;
+		m_FluoroPixelToMM[2][0] = 0.0;           m_FluoroPixelToMM[2][1] = 0.0;           m_FluoroPixelToMM[2][2] = 1.0;m_FluoroPixelToMM[2][3] = 0.0;
+		m_FluoroPixelToMM[3][0] = 0.0;           m_FluoroPixelToMM[3][1] = 0.0;           m_FluoroPixelToMM[3][2] = 0.0;m_FluoroPixelToMM[3][3] = 1.0;
 
 		qf64 halfHeight = 0.5*_rows*_pixelSpacingY;
 		qf64 halfWidth = 0.5*_columns*_pixelSpacingX;
@@ -203,8 +203,8 @@ public:
 
 		m_WorldToCArm = GetRigidTransformMat(halfWidth, halfHeight, patientToDetector, _primaryAngle, _secondaryAngle, 0.0);
 
-		m_CArmProjection[0][0] = _distanceSourceToDetector; m_CArmProjection[0][1] = 0.0;                      m_CArmProjection[0][2] = -halfWidth; m_CArmProjection[0][3] = 0.0;
-		m_CArmProjection[1][0] = 0.0;                      m_CArmProjection[1][1] = _distanceSourceToDetector; m_CArmProjection[1][2] = -halfHeight; m_CArmProjection[1][3] = 0.0;
+		m_CArmProjection[0][0] = _distanceSourceToDetector;m_CArmProjection[0][1] = 0.0;                      m_CArmProjection[0][2] = -halfWidth; m_CArmProjection[0][3] = 0.0;
+		m_CArmProjection[1][0] = 0.0;                      m_CArmProjection[1][1] = _distanceSourceToDetector;m_CArmProjection[1][2] = -halfHeight;m_CArmProjection[1][3] = 0.0;
 		m_CArmProjection[2][0] = 0.0;                      m_CArmProjection[2][1] = 0.0;                      m_CArmProjection[2][2] = 0.0;        m_CArmProjection[2][3] = 0.0;
 		m_CArmProjection[3][0] = 0.0;                      m_CArmProjection[3][1] = 0.0;                      m_CArmProjection[3][2] = -1.0;       m_CArmProjection[3][3] = _distanceSourceToDetector;
 
