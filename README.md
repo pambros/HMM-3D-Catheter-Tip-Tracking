@@ -7,11 +7,13 @@ This code is the implementation of the methods presented in the following papers
 2. P. Ambrosini, D. Ruijters, W.J. Niessen, A. Moelker and T. van Walsum: [Continuous Roadmapping in Liver TACE Procedures Using 2D-3D Catheter-based Registration][2015Ambrosini]. International Journal of Computer Assisted Radiology and Surgery, vol. 10, pp. 1357-1370, 2015. [![](docs/images/pdf.png)][2015AmbrosiniPaper]
 
 [2017Ambrosini]: https://dx.doi.org/10.1109/TMI.2016.2625811
-[2017AmbrosiniPaper]: https://drive.google.com/open?id=0B3KoSrMZcykNYjFmRzVKemlkdW8
+[2017AmbrosiniPaper]: https://pambros.github.io/papers/2017%20Ambrosini%20TMI/2017%20Ambrosini%20TMI%20A%20Hidden%20Markov%20Model%20for%203D%20Catheter%20Tip%20Tracking%20with%202D%20X-ray%20Catheterization%20Sequence%20and%203D%20Rotational%20Angiography.pdf
 [2015Ambrosini]: https://dx.doi.org/10.1007/s11548-015-1218-x
-[2015AmbrosiniPaper]: https://drive.google.com/open?id=0B3KoSrMZcykNcGdpYlhvT2pEN0E
+[2015AmbrosiniPaper]: https://link.springer.com/content/pdf/10.1007/s11548-015-1218-x.pdf
 
-![](docs/images/hmmWorkflow.jpg)
+<p align="center">
+	<img src="docs/images/hmmWorkflow.jpg">
+</p>
 
 ## Prerequisites
 
@@ -56,7 +58,9 @@ mkdir generated
 
 In the folder `generated` you should have now the transformation matrices and images of the registration between the 2D catheter (in red) and the 3D vessels (in green) for the sequence of 74 images.
 
-![](docs/images/registrationExample.png)
+<p align="center">
+	<img src="docs/images/registrationExample.png">
+</p>
 
 ## Specific build
 

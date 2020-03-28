@@ -263,7 +263,7 @@ BEGIN_Q_NAMESPACE
 		qu32 GetTheFirstLeafIdCloseTo(qu32 _id);
 		qbool IsVesselInsideThisPath(qu32 _vesselId, qu32 _pathLeafId);
 
-		void ComputePartType(void);
+		Q_DLL void ComputePartType(void);
 		void PropagatePartType(Vessel *_v, qf64 _type);
 
 		//q::qu32 GetIdFromVesselPointer(q::Vessel *_v);
@@ -273,9 +273,9 @@ BEGIN_Q_NAMESPACE
 		void TagIdInData(qu32 _dataId);
 
 		Q_DLL void GetPtList(PtList &_ptList);
-		void GetLinkPtList(PtList &_ptList);
+		Q_DLL void GetLinkPtList(PtList &_ptList);
 				
-		void SetVesselsValue(qsize_t _dataId, std::vector<qf64> &_valueList);
+		void SetVesselsValue(qsize_t _dataId, const std::vector<qf64> &_valueList);
 		void GetVesselsValue(qsize_t _dataId, std::vector<qf64> &_valueList);
 		void GetSortedVesselsValue(qsize_t _dataId, std::multimap<qf64, Vessel*> &_sortedList);
 
@@ -326,7 +326,7 @@ BEGIN_Q_NAMESPACE
 		void GetPtListRecursively(Vessel *_vessel, PtList &_ptList);
 		void GetLinkPtListRecursively(Vessel *_vessel, PtList &_ptList);
 		
-		void SetVesselsValueRecursively(Vessel *_v, qsize_t _dataId, std::vector<qf64>::iterator &_itValue);
+		void SetVesselsValueRecursively(Vessel *_v, qsize_t _dataId, std::vector<qf64>::const_iterator &_itValue);
 		void GetVesselsValueRecursively(Vessel *_v, qsize_t _dataId, std::vector<qf64> &_valueList);
 	public:
 		Vessel::VesselList m_CompleteVesselList;

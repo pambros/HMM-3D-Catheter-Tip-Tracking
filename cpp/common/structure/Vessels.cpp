@@ -1013,7 +1013,7 @@ BEGIN_Q_NAMESPACE
 					Pt pt;
 					pt.pos[AXE_X] = _vessel->m_Data[Vessel::INFO_X] + ((*it)->m_Data[Vessel::INFO_X] - _vessel->m_Data[Vessel::INFO_X])/2.;
 					pt.pos[AXE_Y] = _vessel->m_Data[Vessel::INFO_Y] + ((*it)->m_Data[Vessel::INFO_Y] - _vessel->m_Data[Vessel::INFO_Y])/2.;
-					pt.pos[AXE_Z] = _vessel->m_Data[Vessel::INFO_Z] + ((*it)->m_Data[Vessel::INFO_Z] - _vessel->m_Data[Vessel::INFO_Z]) / 2.;
+					pt.pos[AXE_Z] = _vessel->m_Data[Vessel::INFO_Z] + ((*it)->m_Data[Vessel::INFO_Z] - _vessel->m_Data[Vessel::INFO_Z])/2.;
 					//pt.pos[PT_U] = 0;
 					pt.vec[AXE_X] = 0;
 					pt.vec[AXE_Y] = 0;
@@ -1029,7 +1029,7 @@ BEGIN_Q_NAMESPACE
 		}
 	}
 			
-	void Vessels::SetVesselsValueRecursively(Vessel *_v, qsize_t _dataId, std::vector<qf64>::iterator &_itValue){
+	void Vessels::SetVesselsValueRecursively(Vessel *_v, qsize_t _dataId, std::vector<qf64>::const_iterator &_itValue){
 		_v->m_Flag = Q_TRUE;
 		_v->m_Data[_dataId] = *_itValue;
 		for(Vessel::VesselList::iterator it = _v->m_VesselList.begin(); it != _v->m_VesselList.end(); ++it){
@@ -1041,9 +1041,9 @@ BEGIN_Q_NAMESPACE
 		}
 	}
 
-	void Vessels::SetVesselsValue(qsize_t _dataId, std::vector<qf64> &_valueList){
+	void Vessels::SetVesselsValue(qsize_t _dataId, const std::vector<qf64> &_valueList){
 		ResetAllFlags();
-		std::vector<qf64>::iterator it = _valueList.begin();
+		std::vector<qf64>::const_iterator it = _valueList.begin();
 		SetVesselsValueRecursively(GetRoot(), _dataId, it);
 	}
 			

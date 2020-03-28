@@ -76,16 +76,16 @@ if(USE_ZLIB)
 endif(USE_ZLIB)
 
 list(APPEND THIRD_PARTY_SOURCES
-	${TRLIB_PATH}thirdParties/bigr/ResampleAndSmoothXMarkerlist.cpp
-	${TRLIB_PATH}thirdParties/bigr/ResampleAndSmoothXMarkerlist.h
-	${TRLIB_PATH}thirdParties/bigr/SplineFitter.cpp
-	${TRLIB_PATH}thirdParties/bigr/SplineFitter.h
+	${TACELIB_PATH}thirdParties/bigr/ResampleAndSmoothXMarkerlist.cpp
+	${TACELIB_PATH}thirdParties/bigr/ResampleAndSmoothXMarkerlist.h
+	${TACELIB_PATH}thirdParties/bigr/SplineFitter.cpp
+	${TACELIB_PATH}thirdParties/bigr/SplineFitter.h
 	
-	${TRLIB_PATH}thirdParties/fastDelegate/FastDelegate.h
+	${TACELIB_PATH}thirdParties/fastDelegate/FastDelegate.h
 	
-	${TRLIB_PATH}thirdParties/mevislab/mlLinearAlgebraTools.h
+	${TACELIB_PATH}thirdParties/mevislab/mlLinearAlgebraTools.h
 	
-	${TRLIB_PATH}thirdParties/numpy/npy_math.h	
+	${TACELIB_PATH}thirdParties/numpy/npy_math.h	
 )
 
 set(TACELIB_SPECIFIC_SOURCES)
